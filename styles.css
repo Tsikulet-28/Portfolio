@@ -1,0 +1,774 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0b0f14;
+  --surface: #121826;
+
+  --primary: #10e956;
+  --secondary: #7ceeb3;
+
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: #3e1e68;
+  overflow: hidden;
+  z-index: -1; /* Ensures the background stays behind other content */
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  line-height: 1.6;
+  color: var(--text-main);
+  background-color: var(--bg);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2.5rem;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  color: var(--text-main);
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 50px;
+  height: 4px;
+  background-color: var(--primary);
+}
+
+section {
+  padding: 100px 0;
+}
+
+.section-center {
+  text-align: center;
+}
+
+.section-center h2::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* Animated Header */
+header {
+  background: rgba(18, 24, 38, 0.8);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  filter: opacity(90%) blur(0.3px);
+  backdrop-filter: blur(10px);
+  animation: fadeInDown 1s ease forwards;
+}
+
+header.scrolled {
+  padding: 10px 0;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.logo:hover {
+  color: var(--secondary);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Hero Section with Animation */
+.hero {
+  height: 100vh;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: "Fira Code", monospace;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-content {
+  max-width: 70%;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  color: var(--primary);
+  animation: fadeInUp 1s ease;
+  line-height: 1.1;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 30px;
+  color: var(--text-muted);
+  opacity: 0.9;
+  animation: fadeInUp 1s ease 0.3s;
+  animation-fill-mode: both;
+}
+
+.hero .hero-content p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+  color: white;
+}
+
+.typed {
+  white-space: nowrap;
+  font-weight: 500;
+  border-right: 2px solid white;
+  padding-right: 4px;
+  animation: cursor 0.6s step-end infinite;
+}
+
+@keyframes cursor {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.hero-btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--bg);
+  padding: 12px 30px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s;
+  animation: fadeInUp 1s ease 0.6s;
+  animation-fill-mode: both;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+.hero-btn:hover {
+  background-color: var(--white);
+  color: var(--bg);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-sidebar {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #10e956;
+  color: var(--black);
+  text-decoration: none;
+  transition: all 0.3s;
+  animation: fadeInUp 1s ease 0.115s;
+}
+
+.sidebar-icon:hover {
+  background-color: var(--white);
+  color: var(--primary);
+  transform: translateY(-3px);
+}
+
+/* About Section */
+.about {
+  background: transparent;
+  font-family: "Fira Code", monospace;
+}
+
+.about p {
+  color: var(--white);
+  animation: fadeInUp 1s ease 0.1s;
+}
+
+.about h2 {
+  color: var(--white);
+  animation: fadeInUp 1s ease;
+}
+
+.about h3 {
+  color: var(--lightgreen);
+  animation: fadeInUp 1s ease 0.1s;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.about-img {
+  flex: 1;
+  position: relative;
+  animation: fadeInUp 1s ease 0.1s;
+}
+
+.about-img::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  top: 20px;
+  left: 20px;
+  z-index: -1;
+}
+
+.about-text {
+  flex: 2;
+  font-size: larger;
+}
+
+.skills {
+  margin-top: 30px;
+  animation: fadeInUp 1s ease 0.1s;
+}
+
+.skill-item {
+  margin-bottom: 15px;
+}
+
+.skill-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.skill-name span {
+  color: var(--white);
+}
+
+button {
+  background-color: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 25px;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: var(--white);
+  color: var(--bg);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Portfolio Section */
+.portfolio {
+  background-color: transparent;
+}
+
+.portfolio-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease 0.1s;
+}
+
+.portfolio h2 {
+  color: var(--white);
+  font-family: "Fira Code", monospace;
+  animation: fadeInUp 1s ease;
+}
+
+.filter-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  padding: 8px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  color: var(--gray);
+  transition: all 0.3s;
+  box-shadow: none;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  color: var(--white);
+  transform: none;
+  box-shadow: none;
+  background: none;
+}
+
+.filter-btn.active::after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 2px;
+  background-color: var(--lightgreen);
+  margin: 5px auto 0;
+}
+
+.portfolio-items {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease 0.25s;
+}
+
+/* Update the portfolio item styles */
+.portfolio-item {
+  min-width: 300px;
+  max-width: 45%;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  position: relative;
+  height: auto;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Modify portfolio image container */
+.portfolio-img {
+  position: relative;
+  overflow: hidden;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s;
+}
+
+.portfolio-item:hover .portfolio-img img {
+  transform: scale(1.05);
+}
+
+/* Create overlay for portfolio info */
+.portfolio-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 15, 20, 0.92);
+  color: white;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.portfolio-item:hover .portfolio-info {
+  opacity: 1;
+  visibility: visible;
+}
+
+.portfolio-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+  transform: translateY(-20px);
+  transition: transform 0.4s ease;
+}
+
+.portfolio-info p {
+  color: var(--white);
+  margin-bottom: 20px;
+  transform: translateY(20px);
+  transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover .portfolio-info h3,
+.portfolio-item:hover .portfolio-info p {
+  transform: translateY(0);
+}
+
+/* Style the view project button */
+.view-project {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 4px;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.portfolio-item:hover .view-project {
+  transform: translateY(0);
+}
+
+.view-project:hover {
+  background-color: var(--white);
+}
+
+/* Contact Section */
+.contact {
+  background-color: transparent;
+  font-family: "Fira Code", monospace;
+}
+
+.contact h2 {
+  color: var(--white);
+  text-align: left;
+  animation: fadeInUp 1s ease;
+}
+
+.contact-content {
+  display: flex;
+  align-items: flex-start; /* Ensures they align at the top */
+  justify-content: space-between; /* Spreads them out horizontally */
+  gap: 100px; /* Space between the two columns */
+  animation: fadeInUp 1s ease 0.3s;
+}
+
+.contact-info {
+  flex: 1; /* or a fixed width if you prefer */
+  max-width: 300px; /* example if you want a narrower info box */
+  padding: 20px;
+  color: white;
+}
+
+.contact-form {
+  flex: 2;
+  color: var(--white);
+  animation: fadeInUp 1s ease 0.3s;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form button[type="submit"] {
+  background-color: var(--primary);
+  color: var(--bg);
+  border: none;
+  padding: 0.6rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+  font-family: "Fira Code", monospace;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: var(--white);
+  color: black;
+}
+
+.contact-info h3 {
+  color: white;
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.contact-info-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  height: 60px;
+  width: 60px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.contact-info-item:hover .contact-icon {
+  background-color: var(--primary);
+  color: var(--bg);
+  transform: translateY(-5px);
+}
+
+.contact-info p {
+  color: white;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.copyright {
+  margin-top: 20px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-img {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .social-sidebar {
+    display: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 0;
+    padding: 15px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .portfolio-items {
+    grid-template-columns: 1fr;
+  }
+}
